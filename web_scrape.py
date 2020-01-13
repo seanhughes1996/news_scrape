@@ -2,6 +2,7 @@
 # %% Imports
 from bs4 import BeautifulSoup
 import requests
+import os
 
 urls = [r'https://www.bbc.co.uk/news', 
        r'https://edition.cnn.com/', 
@@ -9,8 +10,8 @@ urls = [r'https://www.bbc.co.uk/news',
        r'https://www.independent.co.uk/'
        ]
 
-
-f = open(r'C:\projects\news_scrape\Enviroments\web_scrape\Scripts\output.txt', 'w+')
+currentDirectory = os.getcwd()
+f = open(currentDirectory + '\output.txt', 'w+')
 for url in urls:
     r    = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
